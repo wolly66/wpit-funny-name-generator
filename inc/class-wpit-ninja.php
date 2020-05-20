@@ -75,11 +75,11 @@ class Wpit_Ninja {
 
 	 	if ((isset($_POST['done'])) && ($_POST['done'] == 'y')) {
 
-			$nome = strtolower($_POST['nome']);
+			$nome = strtolower( sanitize_text_field( $_POST['nome'] ) );
 			$ninjaname ='';
 
 
-			for($i=0;$i<strlen($nome);$i++){
+			for( $i=0; $i < strlen( $nome ); $i++ ){
 
 				$this->character = $nome[$i];
 
@@ -91,7 +91,7 @@ class Wpit_Ninja {
 		}
 
 	//Metto in Maiuscolo la prima lettera
-	$ninjaname = ucfirst(strtolower($ninjaname));
+	$ninjaname = ucfirst(strtolower( sanitize_text_field( $ninjaname ) ) );
 
 	}
 
@@ -112,7 +112,7 @@ class Wpit_Ninja {
 
 		if ( ! empty( $this->options['twitter'] ) ){
 
-			$twitter_username = $this->options['twitter'];
+			$twitter_username = sanitize_text_field( $this->options['twitter'] );
 
 		} else {
 

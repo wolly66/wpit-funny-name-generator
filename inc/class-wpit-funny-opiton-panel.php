@@ -149,7 +149,7 @@ class Wpit_Funny_Name_Options_Page
 
         print _e( 'Insert one shortcode in a page, post or custom post type.<br /> You can only use one shortcode in each page, post or custom post type.<br />', 'wpit-funny-name-generator' );
 
-        print _e( 'In order to generate ninja name use <code>[ninja_calc]</code> shortcode, Jedi name use <code>[jedi-calc]</code> shortcode and Mad Max name use <code>[madmax_calc]</code> shortcode.)', 'wpit-funny-name-generator' );
+        print _e( 'In order to generate ninja name use <code>[ninja_calc]</code> shortcode, Jedi name use <code>[jedi-calc]</code> shortcode, Mad Max name use <code>[madmax_calc]</code> shortcode and Unicorn name use <code>[unicorn_calc]</code> shortcode.)', 'wpit-funny-name-generator' );
 
     }
 

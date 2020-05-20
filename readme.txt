@@ -1,9 +1,10 @@
 === Wpit Funny Name Generator ===
 Contributors: wolly
-Tags: jedi, mad max, ninja
+Tags: jedi, mad max, ninja, unicorn
+Donate link: https://www.paypal.me/wolly
 Requires at least: 4.0
-Tested up to: 4.4.1
-Stable tag: 1.0
+Tested up to: 5.4
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,6 +13,7 @@ This is a simple plugin that allow to generate your:
 Jedi name
 Ninja name
 Mad Max name
+Unicorn name
 
 
 == Description ==
@@ -29,6 +31,10 @@ Mad Max name:
 
 I found this conversion: http://paolovalenti.info/mad-max-name-generator/
 
+Unicorn name:
+
+as requested by Johann van der Westhuizen.
+
 == Installation ==
 Upload Wpit Funny Name Generator folder to the /wp-content/plugins/ directory
 Activate the plugin through the \'Plugins\' menu in WordPress
@@ -40,11 +46,20 @@ Available Shortcodes:
 In order to generate ninja name use [ninja_calc] shortcode, Jedi name use [jedi-calc] shortcode and Mad Max name use [madmax_calc] shortcode.
 
 == Frequently Asked Questions ==
-In order too generate ninja name use [ninja_calc] shortcode, Jedi name use [jedi-calc] shortcode and Mad Max name use [madmax_calc] shortcode.
+In order too generate ninja name use [ninja_calc] shortcode, Jedi name use [jedi-calc] shortcode, Mad Max name use [madmax_calc] shortcode, Unicorn name use [unicorn_calc] shortcode.
 
 No data will be stored.
+
+= How can I contribute? =
+Drop by the [Wpit Funny Name Generator GitHub](https://github.com/wolly66/wpit-blog-stats) repository and look through the open issues and pull requests.
+
+To translate in your language [Wpit Funny Name](https://translate.wordpress.org/projects/wp-plugins/wpit-funny-name-generator)
 
 == Changelog ==
 1.0
 
 First release
+
+1.1
+
+Added unicorn generator as requested by Johann van der Westhuizen. 

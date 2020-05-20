@@ -2,14 +2,14 @@
 /**
  * @package wpit funny name generator
  * @author Paolo Valenti
- * @version 1.0 first release
+ * @version 1.1 added unicorn generator
  */
 /*
 Plugin Name: WPIT Funny Name Generator
 Plugin URI: http://goodpress.it
-Description: This plugin generate Jedi, Mad Max and Ninja names
+Description: This plugin generate Jedi, Mad Max, Ninja names and unicorn name
 Author: Paolo Valenti aka Wolly for WordPress Italy
-Version: 1.0
+Version: 1.1
 Author URI: http://www.wpitaly.it
 Text Domain: wpit-funny-name-generator
 Domain Path: /languages
@@ -35,7 +35,7 @@ Domain Path: /languages
 define ( 'WPIT_WPITFNG_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 define ( 'WPIT_WPITFNG_PLUGIN_DIR', plugin_dir_url( __FILE__ ) );
 define ( 'WPIT_WPITFNG_PLUGIN_SLUG', basename( dirname( __FILE__ ) ) );
-define ( 'WPIT_WPITFNG_PLUGIN_VERSION', '1.0' );
+define ( 'WPIT_WPITFNG_PLUGIN_VERSION', '1.1' );
 define ( 'WPIT_WPITFNG_PLUGIN_VERSION_NAME', 'wpit-wpitfng-version' );
 
 // Create text domain for localization purpose, po files must be in languages directory
@@ -51,6 +51,7 @@ add_action('plugins_loaded', 'wpit_funny_name_generator_text_domain');
 include_once 'inc/class-wpit-jedi.php';
 include_once 'inc/class-wpit-mad-max.php';
 include_once 'inc/class-wpit-ninja.php';
+include_once 'inc/class-wpit-unicorn.php';
 
 include_once 'inc/class-wpit-funny-opiton-panel.php';
 

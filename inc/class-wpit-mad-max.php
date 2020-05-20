@@ -78,7 +78,7 @@ class Wpit_Mad_Max {
 
 		if ( (isset($_POST['done'] ) ) && ( $_POST['done'] == 'y' ) ) {
 		//name
-		$name = strtolower($_POST['nome']);
+		$name = strtolower( sanitize_text_field ( $_POST['nome'] ) );
 
 
 		$this->lettera = substr( $name, 0, 1 );
@@ -88,7 +88,8 @@ class Wpit_Mad_Max {
 		$madmaxname ='';
 		$madmaxname = $this->mad_max_name;
 
-		$cognome = strtolower($_POST['cognome']);
+		$cognome = strtolower( sanitize_text_field( $_POST['cognome'] ) );
+
 		$this->lettera = substr( $cognome, 0, 1 );
 
 		$this->last_name();
@@ -119,7 +120,7 @@ class Wpit_Mad_Max {
 
 		if ( ! empty( $this->options['twitter'] ) ){
 
-			$twitter_username = $this->options['twitter'];
+			$twitter_username = sanitize_text_field( $this->options['twitter'] );
 
 		} else {
 

@@ -75,23 +75,23 @@ class Wpit_Jedy {
 
 		if ( ( isset( $_POST['done'] ) ) && ( $_POST['done'] == 'y' ) ) {
 
-			$nome = $_POST['nome'];
-			$cognome = $_POST['cognome'];
-			$mamma = $_POST['mamma'];
-			$citta = $_POST['citta'];
+			$nome = sanitize_text_field( $_POST['nome'] );
+			$cognome = sanitize_text_field( $_POST['cognome'] );
+			$mamma = sanitize_text_field( $_POST['mamma'] );
+			$citta = sanitize_text_field( $_POST['citta'] );
 				//Calcolo il nome prendendo le prime tre lettere del cognome e le prime due del nome
 				$jedinome = '';
-				$jedinome .= substr($cognome, 0, 3);
-				$jedinome .= substr($nome, 0, 2);
+				$jedinome .= substr( $cognome, 0, 3 );
+				$jedinome .= substr( $nome, 0, 2 );
 				//Calcolo il cognome prendendo le prime due lettere del cognome della madre e le prime tre della città di nascita
 				$jedisurname = '';
-				$jedisurname .= substr($mamma, 0, 2);
-				$jedisurname .= substr($citta, 0, 3);
+				$jedisurname .= substr( $mamma, 0, 2 );
+				$jedisurname .= substr( $citta, 0, 3 );
 					//Creo il nome jedi mettendo in maiuscolo la prima lettera del nome e del cognome e tutto il resto in minuscolo
 					$jediname = '';
-					$jediname .= ucfirst(strtolower($jedinome));
+					$jediname .= sanitize_text_field( ucfirst(strtolower( $jedinome ) ) );
 					$jediname .= ' ';
-					$jediname .= ucfirst(strtolower($jedisurname));
+					$jediname .= sanitize_text_field( ucfirst(strtolower( $jedisurname ) ) );
 		}
 
 	}
@@ -110,7 +110,7 @@ class Wpit_Jedy {
 
 		if ( ! empty( $this->options['twitter'] ) ){
 
-			$twitter_username = $this->options['twitter'];
+			$twitter_username = sanitize_text_field( ( $this->options['twitter'] ) );
 
 		} else {
 
