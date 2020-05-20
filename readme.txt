@@ -51,7 +51,7 @@ In order too generate ninja name use [ninja_calc] shortcode, Jedi name use [jedi
 No data will be stored.
 
 = How can I contribute? =
-Drop by the [Wpit Funny Name Generator GitHub](https://github.com/wolly66/wpit-blog-stats) repository and look through the open issues and pull requests.
+Drop by the [Wpit Funny Name Generator GitHub](https://github.com/wolly66/wpit-funny-name-generator) repository and look through the open issues and pull requests.
 
 To translate in your language [Wpit Funny Name](https://translate.wordpress.org/projects/wp-plugins/wpit-funny-name-generator)
 
