@@ -25,7 +25,7 @@ Last name: first 2 characters of your mother maiden last name and the first 3 ch
 
 Ninja name:
 
-It\'s a conversion found on facebook some years ago.
+It's a conversion found on facebook some years ago.
 
 Mad Max name:
 
@@ -48,16 +48,16 @@ In order to generate ninja name use [ninja_calc] shortcode, Jedi name use [jedi-
 == Frequently Asked Questions ==
 
 = Ninja name generator =
-In order too generate ninja name use [ninja_calc] shortcode
+In order to generate ninja name use [ninja_calc] shortcode
 
 = Jedi name generator =
-In order too generate Jedi name use [jedi-calc] shortcode
+In order to generate Jedi name use [jedi-calc] shortcode
 
 = Mad Max name generator =  
-In order too generate Max name use [madmax_calc] shortcode
+In order to generate Max name use [madmax_calc] shortcode
 
 = Unicorn name generator = 
-In order too generate Unicorn name use [unicorn_calc] shortcode
+In order to generate Unicorn name use [unicorn_calc] shortcode
 
 = Do the plugin store data= =
 No data will be stored.
