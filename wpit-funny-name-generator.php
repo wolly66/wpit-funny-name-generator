@@ -2,15 +2,15 @@
 /**
  * @package wpit funny name generator
  * @author Paolo Valenti
- * @version 1.1 added unicorn generator
+ * @version 1.2 added unicorn generator
  */
 /*
 Plugin Name: WPIT Funny Name Generator
-Plugin URI: http://goodpress.it
+Plugin URI: https://paolovalenti.org
 Description: This plugin generate Jedi, Mad Max, Ninja names and unicorn name
-Author: Paolo Valenti aka Wolly for WordPress Italy
-Version: 1.1
-Author URI: http://www.wpitaly.it
+Author: Wolly
+Version: 1.2
+Author URI: https://paolovalenti.info
 Text Domain: wpit-funny-name-generator
 Domain Path: /languages
 */
@@ -33,10 +33,12 @@ Domain Path: /languages
 */
 
 define ( 'WPIT_WPITFNG_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
-define ( 'WPIT_WPITFNG_PLUGIN_DIR', plugin_dir_url( __FILE__ ) );
+define ( 'WPIT_WPITFNG_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define ( 'WPIT_WPITFNG_PLUGIN_SLUG', basename( dirname( __FILE__ ) ) );
-define ( 'WPIT_WPITFNG_PLUGIN_VERSION', '1.1' );
+define ( 'WPIT_WPITFNG_PLUGIN_VERSION', '1.2' );
 define ( 'WPIT_WPITFNG_PLUGIN_VERSION_NAME', 'wpit-wpitfng-version' );
+
+
 
 // Create text domain for localization purpose, po files must be in languages directory
 function wpit_funny_name_generator_text_domain(){
@@ -76,6 +78,13 @@ class Wpit_Funny_Name_Generator {
 
 		//check for plugin update (put in construct)
 		add_action( 'init', array( $this, 'update_check' ) );
+		add_action(
+				'wp_enqueue_scripts',
+				array(
+					$this,
+					'enqueue_styles',
+				)
+			);
 
 
 
@@ -157,7 +166,18 @@ class Wpit_Funny_Name_Generator {
 
 	   update_option( WPIT_WPITFNG_PLUGIN_VERSION_NAME , WPIT_WPITFNG_PLUGIN_VERSION );
 	}
+	
+	public function enqueue_styles(){
+		
+		wp_register_style(
+				'wol_funny_name_css',
+				WPIT_WPITFNG_PLUGIN_URL . 'assets/css/funny_name.css',
+				array(),
+				'1.0.0'
+			);
+			wp_enqueue_style( 'wol_funny_name_css' );
 
+	}
 
 
 }// chiudo la classe

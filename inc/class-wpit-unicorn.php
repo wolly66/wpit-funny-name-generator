@@ -102,8 +102,8 @@ class Wpit_Unicorn {
 	if ( array_key_exists( '_submit_check', $_POST ) && ! empty( $_POST['nome'] ) && -1 != ( $_POST['mese'] ) ) {
 
 
-		$html .='<strong><h2>' . __( 'Your Unicorn name is: ', 'wpit-funny-name-generator' ) . ' ' . $unicorn . '</h2></strong>';
-		$html .="<br />\n";
+		$html .= '<h2>' . __( 'Your Unicorn name is: ', 'wpit-funny-name-generator' ) . '</h2>';
+		$html .= '<h2>' . $unicorn . '</h2>';
 
 		$primaparte = __( 'My Unicorn name is ', 'wpit-funny-name-generator' );
 		$secondaparte = __( ' find ', 'wpit-funny-name-generator' );
@@ -128,41 +128,51 @@ class Wpit_Unicorn {
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>";
 
 		$html .="</p>\n";
+		
 	} else {
 
 	//define variable
 	$nome = '';
 	$cognome = '';
 
-	$html .= __( 'All fields are required!', 'wpit-funny-name-generator' );
-	$html .= "<div align=\"left\">\n";
+	$html .= '<p>' . __( 'All fields are required!', 'wpit-funny-name-generator' ) . '</p>';
+	
 		$html .= "<form id=\"form1\" method=\"post\">\n";
 		$html .= wp_nonce_field( '_wpit_unicorn', '_wpit_unicorn', true, false );
-		$html .="<p>\n";
-			$html .='<label for="nome">' . __( 'Name ', 'wpit-funny-name-generator' ) . '</label>';
+		
+			$html .= '<div class="row">';
+				$html .= '<div class="column left">';
+					$html .='<p>' . __( 'Name ', 'wpit-funny-name-generator' ) . '</p>';
+				$html .='</div>';	
 				
-				$html .="<input name=\"nome\" type=\"text\" id=\"nome\" value=\"$nome\" size=\"20\" maxlength=\"50\" />\n";
-			
-		$html .="</p>\n";
+				$html .= '<div class="column right">';
+					$html .= '<input name="nome" type="text" id="nome" value=""  />';
+				$html .='</div>';
+			$html .='</div>';
 		
-			$html .='<label for="mese" >' .__( 'Your born month ', 'wpit-funny-name-generator' ) . '</label>';				
-			
-				$html .= '<select name="mese" id="mese">';
-					$html .= '<option value="-1">' . __( 'Select your born month', 'wpit-funny-name-generator' ) . '</option>';
-					foreach ( $this->month_array() as $key => $m ){
-						$html .= '<option value="' . $key . '">' . $m . '</option>';
-					}
-				$html .= '</select">';
+			$html .= '<div class="row month">';
+				$html .= '<div class="column left">';
+					$html .='<p>' .__( 'Your month born ', 'wpit-funny-name-generator' ) . '</p>';				
+				$html .='</div>';
+				
+				$html .= '<div class="column right">';
+					$html .= '<select name="mese" id="mese">';
+						$html .= '<option value="-1">' . __( 'Select your month born', 'wpit-funny-name-generator' ) . '</option>';
+						foreach ( $this->month_array() as $key => $m ){
+							$html .= '<option value="' . $key . '">' . $m . '</option>';
+						}
+					$html .= '</select>';
+				$html .='</div>';
+			$html .='</div>';	
 		
+			$html .='<input type="hidden" name="_submit_check" value="1"/>';
+			$html .='<div class="submit-name"><input type="submit" name="Submit" value="' . __( 'Your Unicorn name is… ', 'wpit-funny-name-generator' ) . '" /></div>';
+			$html .='<input name="done" type="hidden" value="y" />';
 			
-			
-				$html .='<input type="hidden" name="_submit_check" value="1"/>';
-				$html .='<p><input type="submit" name="Submit" value="' . __( 'Your Unicorn name is … ', 'wpit-funny-name-generator' ) . '" /></p>';
-				$html .='<input name="done" type="hidden" value="y" />';
-			
-		$html .="</form>\n";
-	$html .="</div>\n";
-	$html .="<hr />\n";
+		$html .='</form>';
+	
+	$html .='<hr />';
+	
 	}
 	return $html;
 	}

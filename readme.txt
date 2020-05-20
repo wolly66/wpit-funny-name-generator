@@ -4,7 +4,7 @@ Tags: jedi, mad max, ninja, unicorn
 Donate link: https://www.paypal.me/wolly
 Requires at least: 4.0
 Tested up to: 5.4
-Stable tag: 1.1
+Stable tag: 1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -46,20 +46,39 @@ Available Shortcodes:
 In order to generate ninja name use [ninja_calc] shortcode, Jedi name use [jedi-calc] shortcode and Mad Max name use [madmax_calc] shortcode.
 
 == Frequently Asked Questions ==
-In order too generate ninja name use [ninja_calc] shortcode, Jedi name use [jedi-calc] shortcode, Mad Max name use [madmax_calc] shortcode, Unicorn name use [unicorn_calc] shortcode.
 
+= Ninja name generator =
+In order too generate ninja name use [ninja_calc] shortcode
+
+= Jedi name generator =
+In order too generate Jedi name use [jedi-calc] shortcode
+
+= Mad Max name generator =  
+In order too generate Max name use [madmax_calc] shortcode
+
+= Unicorn name generator = 
+In order too generate Unicorn name use [unicorn_calc] shortcode
+
+= Do the plugin store data= =
 No data will be stored.
 
 = How can I contribute? =
-Drop by the [Wpit Funny Name Generator GitHub](https://github.com/wolly66/wpit-funny-name-generator) repository and look through the open issues and pull requests.
+Drop by the [Wpit Funny Name Generator GitHub](https://github.com/wolly66/wpit-blog-stats) repository and look through the open issues and pull requests.
 
+= How can I translate this plugin in my language? =
 To translate in your language [Wpit Funny Name](https://translate.wordpress.org/projects/wp-plugins/wpit-funny-name-generator)
 
 == Changelog ==
-1.0
+= 1.2 =
 
-First release
+* release date May 20, 2020
+* Styled better Unicorn form
 
-1.1
+= 1.1 = 
 
-Added unicorn generator as requested by Johann van der Westhuizen. 
+* release date May 20, 2020
+* Added unicorn generator as requested by Johann van der Westhuizen. 
+
+= 1.0 =
+
+* First release
