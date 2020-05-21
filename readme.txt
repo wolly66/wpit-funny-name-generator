@@ -4,7 +4,7 @@ Tags: jedi, mad max, ninja, unicorn
 Donate link: https://www.paypal.me/wolly
 Requires at least: 4.0
 Tested up to: 5.4
-Stable tag: 1.2
+Stable tag: 2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -36,9 +36,7 @@ Unicorn name:
 as requested by Johann van der Westhuizen.
 
 == Installation ==
-Upload Wpit Funny Name Generator folder to the /wp-content/plugins/ directory
-Activate the plugin through the \'Plugins\' menu in WordPress
-Insert the right shortcode in a page or post.
+Install Wpit Funny Name Generator via the plugin directory, or upload the files manually to your server, then activate it.
 
 
 Available Shortcodes:
@@ -59,6 +57,13 @@ In order to generate Max name use [madmax_calc] shortcode
 = Unicorn name generator = 
 In order to generate Unicorn name use [unicorn_calc] shortcode
 
+= Where is the shortcodes list? = 
+Go in backend -> Settings -> Funny Name Generator Settings
+
+= How to insert your Twitter username in sharing = 
+Go in backend -> Settings -> Funny Name Generator Settings, then write your twitter username and press save changes
+
+
 = Do the plugin store data= =
 No data will be stored.
 
@@ -69,6 +74,11 @@ Drop by the [Wpit Funny Name Generator GitHub](https://github.com/wolly66/wpit-b
 To translate in your language [Wpit Funny Name](https://translate.wordpress.org/projects/wp-plugins/wpit-funny-name-generator)
 
 == Changelog ==
+= 2.0 =
+
+* release date May 21, 2020
+* big restyle
+
 = 1.2 =
 
 * release date May 20, 2020
@@ -82,3 +92,5 @@ To translate in your language [Wpit Funny Name](https://translate.wordpress.org/
 = 1.0 =
 
 * First release
+
+* release date Jan 13, 2016

@@ -1,12 +1,12 @@
 <?php
-
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 /**
  * Wpit_Mad_Max class.
  */
-class Wpit_Mad_Max {
-
-	//A static member variable representing the class instance
-	private static $_instance = null;
+class Wol_Mad_Max {
 
 	var $lettera;
 	var $mad_max_name;
@@ -24,47 +24,10 @@ class Wpit_Mad_Max {
 	 * @return
 	 */
 
-	private function __construct() {
+	public function __construct() {
 
 		$this->options = get_option( 'wpit-funny-name-generator' );
 		add_shortcode( 'madmax_calc', array( $this, 'mad_max_generator' ) );
-
-
-	}
-
-	/**
-	 * Wpit_Mad_Max::__clone()
-	 * Prevent any object or instance of that class to be cloned
-	 *
-	 * @return
-	 */
-	public function __clone() {
-		trigger_error( "Cannot clone instance of Singleton pattern ...", E_USER_ERROR );
-	}
-
-	/**
-	 * Wpit_Mad_Max::__wakeup()
-	 * Prevent any object or instance to be deserialized
-	 *
-	 * @return
-	 */
-	public function __wakeup() {
-		trigger_error( 'Cannot deserialize instance of Singleton pattern ...', E_USER_ERROR );
-	}
-
-	/**
-	 * Wpit_Mad_Max::getInstance()
-	 * Have a single globally accessible static method
-	 *
-	 * @param mixed $args
-	 *
-	 * @return
-	 */
-	public static function getInstance( $args = array() ) {
-		if ( ! is_object( self::$_instance ) )
-			self::$_instance = new self( $args );
-
-		return self::$_instance;
 
 
 	}
@@ -108,15 +71,15 @@ class Wpit_Mad_Max {
 	if ( array_key_exists( '_submit_check', $_POST ) && ! empty( $_POST['nome'] ) && ! empty( $_POST['cognome'] ) ) {
 
 
-		$html .='<strong><h2>' . __( 'Your Mad Max name is: ', 'wpit-funny-name-generator' ) . ' ' . $mad_max . '</h2></strong>';
-		$html .="<br />\n";
+		$html .= '<h2>' . __( 'Your Mad Max name is:', 'wpit-funny-name-generator' ) . '</h2>';
+		$html .= '<h2>' . $mad_max . '</h2>';
+		
+		$primaparte 	= __( 'My Mad Max name is', 'wpit-funny-name-generator' ) . ' ';
+		$secondaparte 	= __( 'find', 'wpit-funny-name-generator' ) . ' ';
+		$terzaparte 	= __( 'your on', 'wpit-funny-name-generator' ) . ' ';
+		$shorturl 		= get_permalink();
 
-		$primaparte = __( 'My Mad Max name is ', 'wpit-funny-name-generator' );
-		$secondaparte = __( ' find ', 'wpit-funny-name-generator' );
-		$terzaparte = __( '&#35;yourMadMaxname on ', 'wpit-funny-name-generator' );
-		$shorturl = get_permalink();
-
-		$share = $primaparte . $mad_max . $secondaparte . $terzaparte ;
+		$share = $primaparte . $mad_max . ' ' . $secondaparte . $terzaparte ;
 
 		if ( ! empty( $this->options['twitter'] ) ){
 
@@ -126,44 +89,54 @@ class Wpit_Mad_Max {
 
 			$twitter_username = '';
 		}
+		
+		$twitter_args = array(
+			'url'		=> $shorturl,
+			'text'		=> $share,
+			'username'	=> $twitter_username,
+			'hashtags' 	=> 'YourMadMaxName',
+			'type'		=> __( 'Mad Max name', 'wpit-funny-name-generator' ),
+		);
+		$html .= get_twitter_button( $twitter_args );
 
-
-		$html .='<p id="share_links">' . __( 'Share on: ', 'wpit-funny-name-generator' ) . ' ';
-
-		$html .= "<a href=\"https://twitter.com/share\" class=\"twitter-share-button\" data-url=\"$shorturl\" data-text=\"$share\" data-via=\"$twitter_username\" data-hashtags=\"\">Tweet</a>
-			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>";
-
-		$html .="</p>\n";
-	} else {
+			} else {
 
 	//define variable
 	$nome = '';
 	$cognome = '';
 
-	$html .= __( 'All fields are required!', 'wpit-funny-name-generator' );
-	$html .= "<div align=\"left\">\n";
-	$html .= "<form id=\"form1\" method=\"post\">\n";
-	$html .= wp_nonce_field( '_wpit_mad_max', '_wpit_mad_max', true, false );
-	$html .="<p>\n";
-	$html .="<label><br />\n";
-	$html .= __( 'Name ', 'wpit-funny-name-generator' );
-	$html .="<input name=\"nome\" type=\"text\" id=\"nome\" value=\"$nome\" size=\"20\" maxlength=\"50\" />\n";
-	$html .="</label>\n";
-	$html .="</p>\n";
-	$html .="<p>\n";
-	$html .="<label><br />\n";
-	$html .= __( 'Last Name ', 'wpit-funny-name-generator' );
-	$html .="<input name=\"cognome\" type=\"text\" id=\"nome\" value=\"$cognome\" size=\"20\" maxlength=\"50\" />\n";
-	$html .="</label>\n";
-	$html .="</p>\n";
-	$html .="<p>\n";
-	$html .="<input type=\"hidden\" name=\"_submit_check\" value=\"1\"/>\n";
-	$html .='<input type="submit" name="Submit" value="' . __( 'Your Mad Max name is … ', 'wpit-funny-name-generator' ) . '" />';
-	$html .="<input name=\"done\" type=\"hidden\" value=\"y\" />\n";
-	$html .="</p>\n";
-	$html .="</form>\n";
-	$html .="</div>\n";
-	$html .="<hr />\n";
+	$html .= '<p class="wol-funny-name"><i class="fas fa-exclamation-circle"></i> ' . __( 'All fields are required!', 'wpit-funny-name-generator' ) . '</p>';
+	
+		$html .= '<form id="form1" method="post">';
+		$html .= wp_nonce_field( '_wpit_mad_max', '_wpit_mad_max', true, false );
+	
+			$html .= '<div class="row">';
+				$html .= '<div class="column left">';
+					$html .= __( 'Name ', 'wpit-funny-name-generator' );
+				$html .='</div>';
+						
+				$html .= '<div class="column right">';
+					$html .='<input name="nome" type="text" id="nome" value=""  required/>';
+				$html .='</div>';
+			$html .='</div>';
+			
+			$html .= '<div class="row">';
+				$html .= '<div class="column left">';
+					$html .= __( 'Last Name ', 'wpit-funny-name-generator' );
+				$html .='</div>';
+						
+				$html .= '<div class="column right">';
+					$html .='<input name="cognome" type="text" id="nome" value="" required/>';
+				$html .='</div>';
+			$html .='</div>';
+			
+			$html .='<input type="hidden" name="_submit_check" value="1"/>';
+			$html .='<div class="submit-name"><input type="submit" name="Submit" value="' . __( 'Your Mad Max name is… ', 'wpit-funny-name-generator' ) . '" /></div>';
+			$html .='<input name="done" type="hidden" value="y" />';
+	
+	$html .='</form>';
+	
+	$html .='<hr />';
 	}
 	return $html;
 	}
@@ -341,14 +314,5 @@ class Wpit_Mad_Max {
 
 
 }// chiudo la classe
-
-//istanzio la classe
-
-$wpit_mad_max = Wpit_Mad_Max::getInstance();
-
-
-
-
-
 
 

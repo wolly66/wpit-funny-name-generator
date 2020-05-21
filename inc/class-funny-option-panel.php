@@ -1,10 +1,13 @@
 <?php
-
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}	
 
 /**
  * Wpit_Funny_Name_Options_Page class.
  */
-class Wpit_Funny_Name_Options_Page
+class Wol_Funny_Name_Options_Page
 {
     /**
      * Holds the values to be used in the fields callbacks
@@ -154,6 +157,3 @@ class Wpit_Funny_Name_Options_Page
     }
 
    }
-
-if( is_admin() )
-    $wpit_funny_name_options_page = new Wpit_Funny_Name_Options_Page();

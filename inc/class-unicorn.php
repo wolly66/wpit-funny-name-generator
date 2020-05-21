@@ -1,13 +1,14 @@
 <?php
-
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 /**
  * Wpit_Unicorn class.
  */
-class Wpit_Unicorn {
+class Wol_Unicorn {
 
-	//A static member variable representing the class instance
-	private static $_instance = null;
-
+	
 	var $mont_nr;
 	var $unicorn_name;
 	var $unicorn_mont;
@@ -24,7 +25,7 @@ class Wpit_Unicorn {
 	 * @return
 	 */
 
-	private function __construct() {
+	public function __construct() {
 
 		$this->options = get_option( 'wpit-funny-name-generator' );
 		add_shortcode( 'unicorn_calc', array( $this, 'unicorn_generator' ) );
@@ -32,43 +33,7 @@ class Wpit_Unicorn {
 
 	}
 
-	/**
-	 * Wpit_Mad_Max::__clone()
-	 * Prevent any object or instance of that class to be cloned
-	 *
-	 * @return
-	 */
-	public function __clone() {
-		trigger_error( "Cannot clone instance of Singleton pattern ...", E_USER_ERROR );
-	}
-
-	/**
-	 * Wpit_Mad_Max::__wakeup()
-	 * Prevent any object or instance to be deserialized
-	 *
-	 * @return
-	 */
-	public function __wakeup() {
-		trigger_error( 'Cannot deserialize instance of Singleton pattern ...', E_USER_ERROR );
-	}
-
-	/**
-	 * Wpit_Mad_Max::getInstance()
-	 * Have a single globally accessible static method
-	 *
-	 * @param mixed $args
-	 *
-	 * @return
-	 */
-	public static function getInstance( $args = array() ) {
-		if ( ! is_object( self::$_instance ) )
-			self::$_instance = new self( $args );
-
-		return self::$_instance;
-
-
-	}
-
+	
 	public function unicorn_generator(){
 
 	// Calcolo il Nome Mad Max
@@ -99,18 +64,18 @@ class Wpit_Unicorn {
 	//Inizializzo l'html finale dello shortcode
 	$html = '';
 
-	if ( array_key_exists( '_submit_check', $_POST ) && ! empty( $_POST['nome'] ) && -1 != ( $_POST['mese'] ) ) {
+	if ( array_key_exists( '_submit_check', $_POST ) && ! empty( $_POST['nome'] ) && ! empty ( $_POST['mese'] ) ) {
 
 
 		$html .= '<h2>' . __( 'Your Unicorn name is: ', 'wpit-funny-name-generator' ) . '</h2>';
 		$html .= '<h2>' . $unicorn . '</h2>';
 
-		$primaparte = __( 'My Unicorn name is ', 'wpit-funny-name-generator' );
-		$secondaparte = __( ' find ', 'wpit-funny-name-generator' );
-		$terzaparte = __( '&#35;your Unicorn name on ', 'wpit-funny-name-generator' );
+		$primaparte = __( 'My Unicorn name is', 'wpit-funny-name-generator' ) . ' ';
+		$secondaparte = __( 'find', 'wpit-funny-name-generator' ) . ' ';
+		$terzaparte = __( 'your on', 'wpit-funny-name-generator' ) . ' ';
 		$shorturl = get_permalink();
 
-		$share = $primaparte . $unicorn . $secondaparte . $terzaparte ;
+		$share = $primaparte . $unicorn . ' ' . $secondaparte . $terzaparte ;
 
 		if ( ! empty( $this->options['twitter'] ) ){
 
@@ -122,12 +87,14 @@ class Wpit_Unicorn {
 		}
 
 
-		$html .='<p id="share_links">' . __( 'Share on: ', 'wpit-funny-name-generator' ) . ' ';
-
-		$html .= "<a href=\"https://twitter.com/share\" class=\"twitter-share-button\" data-url=\"$shorturl\" data-text=\"$share\" data-via=\"$twitter_username\" data-hashtags=\"\">Tweet</a>
-			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>";
-
-		$html .="</p>\n";
+		$twitter_args = array(
+			'url'		=> $shorturl,
+			'text'		=> $share,
+			'username'	=> $twitter_username,
+			'hashtags' 	=> 'YourUnicornName',
+			'type'		=> __( 'Unicorn name', 'wpit-funny-name-generator' ),
+		);
+		$html .= get_twitter_button( $twitter_args );
 		
 	} else {
 
@@ -135,29 +102,29 @@ class Wpit_Unicorn {
 	$nome = '';
 	$cognome = '';
 
-	$html .= '<p>' . __( 'All fields are required!', 'wpit-funny-name-generator' ) . '</p>';
+	$html .= '<p class="wol-funny-name"><i class="fas fa-exclamation-circle"></i> ' . __( 'All fields are required!', 'wpit-funny-name-generator' ) . '</p>';
 	
-		$html .= "<form id=\"form1\" method=\"post\">\n";
+		$html .= '<form id="form1" method="post">';
 		$html .= wp_nonce_field( '_wpit_unicorn', '_wpit_unicorn', true, false );
 		
 			$html .= '<div class="row">';
 				$html .= '<div class="column left">';
-					$html .='<p>' . __( 'Name ', 'wpit-funny-name-generator' ) . '</p>';
+					$html .= __( 'Name ', 'wpit-funny-name-generator' );
 				$html .='</div>';	
 				
 				$html .= '<div class="column right">';
-					$html .= '<input name="nome" type="text" id="nome" value=""  />';
+					$html .= '<input name="nome" type="text" id="nome" value=""  required/>';
 				$html .='</div>';
 			$html .='</div>';
 		
-			$html .= '<div class="row month">';
+			$html .= '<div class="row">';
 				$html .= '<div class="column left">';
-					$html .='<p>' .__( 'Your month born ', 'wpit-funny-name-generator' ) . '</p>';				
+					$html .=__( 'Your month born ', 'wpit-funny-name-generator' );				
 				$html .='</div>';
 				
 				$html .= '<div class="column right">';
-					$html .= '<select name="mese" id="mese">';
-						$html .= '<option value="-1">' . __( 'Select your month born', 'wpit-funny-name-generator' ) . '</option>';
+					$html .= '<select name="mese" id="mese" required>';
+						$html .= '<option value="">' . __( 'Select your month born', 'wpit-funny-name-generator' ) . '</option>';
 						foreach ( $this->month_array() as $key => $m ){
 							$html .= '<option value="' . $key . '">' . $m . '</option>';
 						}
@@ -334,11 +301,6 @@ class Wpit_Unicorn {
 
 
 }// chiudo la classe
-
-//istanzio la classe
-
-$wpit_unicorn = Wpit_Unicorn::getInstance();
-
 
 
 

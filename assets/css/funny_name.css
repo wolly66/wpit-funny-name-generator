@@ -1,10 +1,12 @@
+/* Funny name generator CSS */
+.wol-funny-name .fa-exclamation-circle{
+	color: #ff7800;
+	font-size: 1.5em;
+	
+}
 .submit-name{
 	
 	margin-top: 25px;
-}
-.row.month{
-	
-	margin-top: 1em;
 }
 
 .column input[type=text]{
@@ -56,6 +58,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   width: 100%;
+  margin-bottom: 1em;
 }
 
 .column {
