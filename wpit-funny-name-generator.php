@@ -2,14 +2,14 @@
 /**
  * @package wpit funny name generator
  * @author Paolo Valenti
- * @version 2.0 big restyle
+ * @version 2.1 big restyle
  */
 /*
 Plugin Name: WPIT Funny Name Generator
 Plugin URI: https://paolovalenti.org
 Description: This plugin generate Jedi, Mad Max, Ninja names and unicorn name
 Author: Wolly
-Version: 2.0
+Version: 2.1
 Author URI: https://paolovalenti.info
 Text Domain: wpit-funny-name-generator
 Domain Path: /languages
@@ -61,7 +61,7 @@ if ( ! class_exists( 'Wpit_Funny_Name_Generator' ) ){
 		 * @since  1.0
 		 * @var    $version
 		 */
-		private $version = '2.0';
+		private $version = '2.1';
 		
 		/**
 		 * option
@@ -233,7 +233,7 @@ if ( ! class_exists( 'Wpit_Funny_Name_Generator' ) ){
 			
 			if ( is_admin(  ) ){
 				
-				require_once WPIT_WPITFNG_PLUGIN_PATH . 'class-funny-option-panel.php';
+				require_once WPIT_WPITFNG_PLUGIN_PATH . 'inc/class-funny-option-panel.php';
 				
 			} else {
 				require_once WPIT_WPITFNG_PLUGIN_PATH . 'wol-wrapper-functions.php';
